@@ -19,8 +19,15 @@
 
     - `/`(直下)と、`/frontend`の２つある
 
-2. `./vendor/bin/sail up -d`で Docker コンテナを起動（以降は Docker Desktop で実行可能）
-    - もしかしたらリポジトリクローン直後でこのコマンド使えない可能性あり。調べ次第更新予定
+2. `docker-compose up -d`を実行
+
+    - この時点ではまだサーバーが正常起動しない（はず）
+
+3. PHP に必要なライブラリを設定
+    - `docker-compose exec laravel.test composer install`
+    - または laravel.test コンテナで`composer install`
+
+以上で Docker の構築が完了し、開発ができるようになる
 
 ## 以下は最初の環境構築時にやったこと（今後実行する必要はない）
 
