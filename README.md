@@ -9,7 +9,7 @@
 -   Laravel（Laravel Breeze）は`/`(直下)のファイルで行う
     -   Laravel（API）は http://localhost
     -   API モードで使用するため、`/api`以降でデータをやり取りする
--   frontend（Next.js の開発）は`/frontend`で行う
+-   frontend（Next.js の開発）は`/web`で行う
     -   フロントは http://localhost:3000
     -   初期段階では昔の Laravel と同じ UI が表示されているが、全て next.js のフロントエンドである
 
@@ -17,7 +17,7 @@
 
 1. `.env.example`を`.env`としてコピー
 
-    - `/`(直下)と、`/frontend`の２つある
+    - `/`(直下)と、`/web`の２つある
 
 2. `docker-compose up -d`を実行
 
@@ -41,7 +41,7 @@ https://note.com/shinyeah/n/ndd9088ed746b これを見て構築したもの
 frontend:
     image: "node"
     volumes:
-        - "./frontend:/var/www/html"
+        - "./web:/var/www/html"
     working_dir: "/var/www/html"
     ports:
         - "3000:3000"
@@ -60,12 +60,12 @@ phpmyadmin:
         - sail
 ```
 
-4. `./vendor/bin/sail up -d`で Docker を起動（以降は Docker Desktop で実行可能）
+4. `docker-compose up -d`で Docker を起動（以降は Docker Desktop で実行可能）
 
 5. laravel を API モードで使用するため、以下コマンドを実行
 
 ```bash
-./vendor/bin/sail shell # docker imageの中に入る
+docker-compose exec laravel.test bash # docker imageの中に入る
 
 composer require laravel/breeze --dev
 

@@ -98,7 +98,7 @@ services:
     frontend:
         image: "node"
         volumes:
-            - "./frontend:/var/www/html"
+            - "./web:/var/www/html"
         working_dir: "/var/www/html"
         ports:
             - "3000:3000"
